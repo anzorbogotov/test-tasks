@@ -1,0 +1,14 @@
+def choose_plural(kolvo, slova):
+    if kolvo % 10 == 1 and kolvo % 100 != 11:
+        a = 0
+    elif kolvo % 10 >= 2 and kolvo % 10 <=4 and (kolvo % 100 < 10 or kolvo % 100 > 20):
+        a = 1   
+    else:
+        a = 2
+    return str(kolvo) + ' ' + slova[a]
+result_1 = choose_plural(12, ('копейка', 'копейки', 'копеек'))
+print(result_1)
+result_2 = choose_plural(7, ('рубль', 'рубля', 'рублей'))
+print(result_2)
+result_3 = choose_plural(51, ('цент', 'цента', 'центов'))
+print(result_3)
