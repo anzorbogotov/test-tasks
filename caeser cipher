@@ -1,0 +1,11 @@
+def encrypt(message, k):
+    letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+    message = message.upper()
+    result = ''
+    for i in message:
+        index = letters.find(i)
+        if index != -1:
+            result += letters[(index + k) % len(letters)]
+        else:
+            result += i
+    return result
