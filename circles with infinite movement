@@ -1,0 +1,29 @@
+import tkinter
+import random
+window = tkinter.Tk()
+canvas = tkinter.Canvas(window, width=400, height=400)
+canvas.pack()
+circles = []
+colors = ['green', 'red', 'yellow', 'BlueViolet', 'grey']
+x = 0
+
+for i in range(5):
+    catalog = {}
+    catalog['dx'] = random.randint(-10, 10)
+    catalog['dy'] = random.randint(-10, 10)
+    
+    x_1 = random.randint(0, 150)
+    y_1 = random.randint(0, 150)
+    krug = canvas.create_oval(x_1, y_1, x_1 + x, y_1 + x, fill = random.choice(colors))
+    x += 10
+    catalog['id'] = krug
+    circles.append(catalog)
+while True:
+    for circle in circles:
+        x0, y0, x1, y1 = canvas.coords(circle['id'])
+        if x0 < 0 or x1 > 400:
+            circle['dx'] = - circle['dx']
+        elif y0 < 0 or y1 > 400:
+            circle['dy'] = - circle['dy']
+        canvas.move(circle ['id'], circle ['dx'], circle ['dy'])
+    canvas.update()
